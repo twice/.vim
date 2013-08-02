@@ -79,9 +79,10 @@ if has("gui_macvim") && has ('gui_running')
   imap <D-]> <Esc>>>i
   imap <D-[> <Esc><<i
 
-  noremap <D-t> :CtrlP<CR>
-  inoremap <D-t> <ESC>:CtrlP<CR>
-
+  "ctrlp custom key mappings"
+  macmenu &File.New\ Tab key=<nop>
+  map <D-t> :CtrlP<CR>
+  imap <D-t> <ESC>:CtrlP<CR>
 else
   colorscheme desert
 endif
@@ -258,7 +259,7 @@ nmap <leader>b :BuffergatorToggle<cr>
 " UltiSnipsEdit
 nmap <leader>se :UltiSnipsEdit<cr>
 let g:UltiSnipsSnippetsDir        = '~/.vim'
-let g:UltiSnipsSnippetDirectories = ["ultisnips"]
+let g:UltiSnipsSnippetDirectories = ["ultisnippets"]
 
 " Rails.vim
 nnoremap <leader>vv  :Rview<cr>
@@ -279,8 +280,7 @@ nnoremap <leader>n :NumbersToggle<CR>
 runtime macros/matchit.vim
 
 "ctrlp"
-noremap <D-t> :CtrlP<CR>
-inoremap <D-t> <ESC>:CtrlP<CR>
+let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
   \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
