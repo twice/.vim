@@ -1,0 +1,51 @@
+#simple_form and twitter_bootstrap
+
+snippet sf "simple_form_for" !b
+<%= simple_form_for(@${0:model}) do |f| %>
+  $1
+<% end %>
+endsnippet
+
+snippet sfc "simple_form_for child model" !b
+<%= simple_form_for([@${0:parent}, @${1:child}]) do |f| %>
+  $2
+<% end %>
+endsnippet
+
+snippet sffi "simple_form_for form input" !b
+<%= f.input :${1:name} %>
+endsnippet
+
+snippet sfpi "simple_form_for prepended input" !b
+<%= f.input :${1:name}, :wrapper => :prepend, label: false do %>
+  <%= content_tag :span, ${2:"Name or Icon"}, class: "add-on" %>
+  <%= f.input_field :${3:name} %>
+<% end %>
+endsnippet
+
+snippet sfai "simple_form_for appended_input" !b
+<%= f.input :${1:name}, :wrapper => :append, label: false do %>
+  <%= content_tag :span, ${2:"Name or Icon"}, class: "add-on" %>
+  <%= f.input_field :${3:name} %>
+<% end %>
+endsnippet
+
+snippet sfbi "simple-form_for boolean_checkbox field" !b
+<%= f.input :${0:name} , :as => :boolean %>
+endsnippet
+
+snippet sfsi "simple_form_for select box field" !b
+<%= f.input :${1:name}, :collection => ${2:collection} %>
+endsnippet
+
+snippet sfsb "simple_form_for submit_buttons" !b
+<%= f.button :submit, class: 'btn-primary' %>
+endsnippet
+
+snippet dp "Bootstrap date picker" !b
+<%= f.input :${0:field_name}, wrapper: :prepend, label: false do %>
+  <%= content_tag(:span, content_tag(:i, nil, class: "icon-calendar"), class: "add-on") %>
+  <%= f.input_field :${0:field_name}, :as => :string, class: 'date_picker' %>
+<% end %>
+endsnippet
+

@@ -1,0 +1,17 @@
+snippet table "bootstrap styled table with borders and all" !
+<table class="table table-bordered table-condensed table-striped">
+  <thead>
+	${1:headers}
+  </thead>
+  <tbody>
+	$2
+  </tbody>
+</table>
+endsnippet
+
+snippet ltbtn "link_to bootstrap button" !
+<%= link_to ${0:path}, class: "btn btn-$1" do %>
+  <icon class="icon-$2"></icon>
+  ${3:Title}
+<% end %>
+endsnippet

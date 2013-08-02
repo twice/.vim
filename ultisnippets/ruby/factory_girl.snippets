@@ -1,0 +1,56 @@
+snippet fgd "FactoryGirl.define do..end" !b
+FactoryGirl.define do
+  factory :${1:name} do
+    $0
+  end
+
+end
+endsnippet
+
+snippet fac "factory :name do..end" !b
+factory :${1:name} do
+  $0
+end
+endsnippet
+
+snippet faca "factory :name with aliases" !b
+factory :${1:name}, ${2:aliases}: [:${3:alias}] do
+  $0
+end
+endsnippet
+
+snippet fgc "FactoryGirl.create" !
+FactoryGirl.create :${1:name}
+endsnippet
+
+snippet fgct "FactoryGirl.create with trait" !
+FactoryGirl.create :${1:name}, :${2:trait}
+endsnippet
+
+snippet fgb "FactroryGirl.build" !
+FactoryGirl.build :${1:name}
+endsnippet
+
+snippet fgcl "FactoryGirl.create_list" !b
+FactoryGirl.create_list :${1:object}, ${2:object_count}, ${3:assoc_hash}
+endsnippet
+
+snippet ign "ignore FactoryGirl" !b
+ignore do
+  $0
+end
+endsnippet
+
+snippet trait "trait :name do..end" !b
+trait :${1:name} do
+  $0
+end
+endsnippet
+
+snippet traita "trait with after" !b
+trait :${1:name} do
+  after :${2:create} do |${3:assoc_obj}|
+    FactoryGirl.create_list :${4:factory}, ${5:num_created}, ${6:assoc}: ${3:assoc_obj}
+  end
+end
+endsnippet

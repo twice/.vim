@@ -1,41 +1,148 @@
-set encoding=utf-8
-set t_Co=256
+set nocompatible 	"get rid of Vi compatibility mode
+filetype off
 
-color badwolf
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
 
-"Badwolf colorscheme
-set background=dark
-let g:badwolf_tabline = 2
-let g:badwolf_html_link_underline = 0
+"let vundle manage vundle"
+Bundle 'gmarik/vundle'
 
-"settings for textobj-rubyblock
-runtime macros/matchit.vim
+"======================================================
+" Plugin installations
+"======================================================
 
-set nocompatible
-if has("autocmd")
-  filetype indent plugin on
+" System
+Bundle 'vim-scripts/Gist.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
+Bundle 'Raimondi/delimitMate'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tristen/vim-sparkup.git'
+Bundle 'kien/ctrlp.vim'
+Bundle 'SirVer/ultisnips.git'
+Bundle 'godlygeek/tabular'
+Bundle 'Lokaltog/vim-powerline'
+
+" Syntaxes and such.
+Bundle 'leshill/vim-json'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-haml'
+Bundle 'groenewege/vim-less'
+Bundle 'othree/html5.vim'
+Bundle 'itspriddle/vim-jquery'
+
+"Python specific
+" Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'fs111/pydoc.vim'
+Bundle 'vim-scripts/python_match.vim'
+"Bundle 'nvie/vim-flake8'
+Bundle 'jmcantrell/vim-virtualenv'
+
+" Ruby specific
+Bundle 'tpope/vim-rails'
+Bundle "vim-ruby/vim-ruby"
+Bundle 'tpope/vim-endwise'
+
+" Fun, but not useful
+Bundle 'sjl/badwolf'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'skammer/vim-css-color'
+Bundle 'mgutz/vim-colors'
+
+
+filetype indent plugin on "required!
+
+"=========================================================
+" Various settings
+"=========================================================
+
+if has("gui_macvim") && has ('gui_running')
+  color badwolf
+  set antialias        "Smooth macvim fonts
+  set guioptions-=T    " Removes top toolbar
+  set guioptions-=r    " Removes right hand scroll bar
+  set go-=L            " Removes left hand scroll bar
+  set guifont=Monaco:h16
+
+  "Set indenting to Command [ or ]"
+  vmap <D-]> >gv
+  vmap <D-[> <gv
+  nmap <D-]> >>
+  nmap <D-[> <<
+  omap <D-]> >>
+  omap <D-[> <<
+  imap <D-]> <Esc>>>i
+  imap <D-[> <Esc><<i
+
+  noremap <D-t> :CtrlP<CR>
+  inoremap <D-t> <ESC>:CtrlP<CR>
+
+else
+  colorscheme desert
 endif
 
-set title
-set scrolloff=3
-set visualbell
-set autowrite
+syntax enable		"enable syntax highlighting - used to be (syntax on)
+
+set encoding=utf-8
+set t_Co=256 		"enable 256 color mode
+
+set title		"change terminal title
+set number		"show line numbers
+set incsearch		"show search matches as you type
+set scrolloff=3		" maintain at least 3 lines of context around cursor.
+set autowriteall	"Auto-save files when switching buffers or leaving vim
+set undolevels=1000	"Undo as much as you can because you can!
+set autoindent		"automatic indentation
+set copyindent		"copy previous indentation on autoindenting
+set hidden		"Allow unsaved buffers in the background
+set nowrap		"don't wrap long lines
+set showmatch		"show matching parenthesis
+set ignorecase		"ignore case when searching
+set smartcase		"ignore case if search term is lower case otherwise case-sensitive
+set visualbell		"no beep
+set noerrorbells	"no beep ok!
+set textwidth=80	"line length	
+
+set tabstop=4		"tab spacing - '2 spaces'
+set softtabstop=2	"unify
+set shiftwidth=2
+set expandtab
+
+"WildMenu completion
+set wildignore+=*.pyc
+set wildignore+=*.class
+set wildignore+=*.DS_Store
+set wildignore+=*.git,.svn,.hg
+set wildignore+=*.sw?
 
 "New window splits placement
 set splitbelow
 set splitright
-
-let mapleader = ","
-noremap \ ,
 
 "Do not keep backup files
 set nobackup
 set nowritebackup
 set noswapfile
 
-"Maybe useful for powerline
-set laststatus=2
-"set noshowmode
+"======================================================
+" Custom key mappings
+"======================================================
+
+let mapleader = ","
+noremap \ ,
+
+" Quickly edit/source .vimrc
+noremap <leader>ve :edit $HOME/.vimrc<CR>
+noremap <leader>vs :source $HOME/.vimrc<CR>
+
+" Switch between buffers
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
 
 "convinient keys
 inoremap jk <esc>
@@ -48,7 +155,7 @@ noremap - ;
 
 "Surround selected tags with erb tags
 vnoremap ee "zdi<% <c-r>z %><esc>
-vnoremap eo "zdi<%= <c-r>z %><esc>
+vnoremap eo "zdi<%= <c-r>z %><esc>	
 
 "Insert space below line
 nnoremap <leader>d o<esc>k
@@ -74,23 +181,6 @@ nnoremap k gk
 nnoremap Q gqip
 vnoremap Q gq
 
-"Sparkup plugin
-let g:sparkupNextMapping = '<c-;>'
-
-"Buffergator Plugin
-nmap <leader>b :BuffergatorToggle<cr>
-
-" UltiSnipsEdit
-nmap <leader>se :UltiSnipsEdit<cr>
-let g:UltiSnipsSnippetDirectories = ["ultisnippets"]
-
-
-" Rails.vim
-nnoremap <leader>vv  :Rview<cr>
-nnoremap <leader>vc  :Rcontroller<cr>
-nnoremap <leader>vg  :Rmigration<cr>
-nnoremap <leader>vm  :Rmodel<cr>
-
 " Press space bar to turn off search highlighting and clear any message
 " displayed
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
@@ -111,6 +201,36 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
+" Saving and exit
+nmap <leader>q :wqa!<CR>
+nmap <leader>w :w!<CR>
+
+" Edit/View files relative to current directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+
+"======================================================
+" Programming languages settings
+"======================================================
+
+autocmd FileType python setlocal shiftwidth=4 expandtab tabstop=4 softtabstop=4
+autocmd FileType python setlocal colorcolumn=80
+
+" Other files to consider Ruby
+au BufRead,BufNewFile Gemfile,Rakefile,Thorfile,config.ru,Vagrantfile,Guardfile,Capfile set ft=ruby
+
+"two space indentation in coffeescript files
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+"SASS / SCSS
+au BufNewFile,BufReadPost *.scss setl foldmethod=indent
+au BufNewFile,BufReadPost *.sass setl foldmethod=indent
+au BufRead,BufNewFile *.scss set filetype=scss
+
+
+"=======================================================
+" Plugin Configuration
+"=======================================================
 
 " Tabular plugin for alignment
 if exists(":Tabularize")
@@ -120,18 +240,51 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:<CR>
 endif
 
+"Badwolf colorscheme
+set background=dark
+let g:badwolf_tabline = 2
+let g:badwolf_html_link_underline = 0
+let g:badwolf_css_props_highlight = 1
 
-"two space indentation in coffeescript files
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+"NERDTree
+let g:NERDTreeWinPos = "right"
+
+"Sparkup plugin
+let g:sparkupNextMapping = '<c-;>'
+
+"Buffergator Plugin
+nmap <leader>b :BuffergatorToggle<cr>
+
+" UltiSnipsEdit
+nmap <leader>se :UltiSnipsEdit<cr>
+let g:UltiSnipsSnippetsDir        = '~/.vim'
+let g:UltiSnipsSnippetDirectories = ["ultisnips"]
+
+" Rails.vim
+nnoremap <leader>vv  :Rview<cr>
+nnoremap <leader>vc  :Rcontroller<cr>
+nnoremap <leader>vg  :Rmigration<cr>
+nnoremap <leader>vm  :Rmodel<cr>
+
+"Maybe useful for powerline
+set laststatus=2			"always show the status line
+let g:Powerline_symbols = 'fancy'
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+set fillchars+=stl:\ ,stlnc:\
 
 "Toggle Number lines
 nnoremap <leader>n :NumbersToggle<CR>
 
-"Python settings
-let g:pymode_breakpoint_key = '<leader>p'
-let g:pymode_folding = 0
-"let g:pymode_lint_checker = "pep8"
+"settings for textobj-rubyblock
+runtime macros/matchit.vim
 
-nnoremap <leader>g :call RopeGotoDefinition()
-nnoremap <leader>m :call RopeRename()
+"ctrlp"
+noremap <D-t> :CtrlP<CR>
+inoremap <D-t> <ESC>:CtrlP<CR>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
+  \ }
+"autocmd BufWritePost *.py call Flake8()
+
 

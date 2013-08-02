@@ -1,0 +1,71 @@
+snippet cs "collection_select"
+<%= collection_select ${1:object}, ${2:method}, ${3:collection}, ${4:value_method}, ${5:text_method}${6:, options, html_options} %>${7}
+endsnippet
+
+snippet ff "form_for"
+<%= form_for @${1:model} do |f| %>
+  <%= f.error_messages %>
+  ${2}
+<% end %>
+endsnippet
+
+snippet fcb "f.check_box"
+<%= ${1:f}.check_box :${2:attribute} %>
+endsnippet
+
+snippet fff "f.file_field"
+<%= ${1:f}.file_field :${2:attribute} %>
+endsnippet
+
+snippet fhf "f.hidden_field"
+<%= ${1:f}.hidden_field :${2:attribute} %>
+endsnippet
+
+snippet fl "f.label"
+<%= ${1:f}.label :${2:attribute}, '${3:$2}' %>
+endsnippet
+
+snippet fpf "f.password_field"
+<%= ${1:f}.password_field :${2:attribute} %>
+endsnippet
+
+snippet frb "f.radio_button"
+<%= ${1:f}.radio_button :${2:attribute}, :${3:tag_value} %>
+endsnippet
+
+snippet fs "f.submit"
+<%= ${1:f}.submit "${2:button name}" %>
+endsnippet
+
+snippet fta "f.text_area"
+<%= ${1:f}.text_area :${2:attribute} %>
+endsnippet
+
+snippet ftf "f.text_field"
+<%= ${1:f}.text_field :${2:attribute} %>
+endsnippet
+
+snippet ft "form_tag"
+<%= form_tag(${1:'url'}) do %>
+  ${2}
+<% end %>
+endsnippet
+
+snippet ftff "fields_for"
+<%= fields_for :${1:model}, @$1 do |${2:f}| %>
+  ${3}
+<% end %>
+endsnippet
+
+snippet fto "options_from_collection_for_select"
+<%= options_from_collection_for_select ${1:collection}, ${2:value_method}, ${3:text_method}, ${4:selected_value} %>
+endsnippet
+
+snippet ftst "submit_tag"
+<%= submit_tag "${1:Save changes}" %>
+endsnippet
+
+snippet ftstr "submit_to_remote"
+<%= submit_to_remote ${1:name}, ${2:value} %>
+endsnippet
+

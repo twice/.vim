@@ -1,0 +1,59 @@
+snippet ft "form_tag  default" !b
+<%= form_tag $1_path, ${2::method => :put} do %>
+  $3
+<% end %>
+endsnippet
+
+snippet cbt "check_box_tag (default)" !b
+<%= check_box_tag ${1:name}, ${2:value="1"}, ${3:check?=false}, ${4:html => options} %>
+endsnippet
+
+snippet st "submit_tag (default)" !b
+<%= submit_tag ${1:value="Save Changes"}, ${2:html => options} %>
+endsnippet
+
+snippet eft "email_field tag (default)" !b
+<%= email_field_tag ${1:name}, ${2:value=nil}, ${3:html => options} %>
+endsnippet
+
+snippet fft "file_field_tag (default)" !b
+<label for="${1:file}"> ${2:File to Upload} </label>
+<%= file_field_tag ${1:file}, ${3:html => options } %>
+endsnippet
+
+snippet hft "hidden_field_tag (default)" !b
+<%= hidden_field_tag ${1:name}, ${2:value=nil}, ${3:html => options} %>
+endsnippet
+
+snippet lt "label_tag (default)" !b
+<%= label_tag ${1:name}, ${2:display_name} %>
+endsnippet
+
+snippet nft "number_field_tag (default)" !b
+<%= number_field_tag ${1:name}, ${2:value=nil}, ${3:options_hash} %>
+endsnippet
+
+snippet rbt "radio_button_tag (default)" !b
+<%= radio_button_tag ${1:name}, ${2:value},${3:checked=false}, ${4:options_hash} %>
+endsnippet
+
+snippet sft "search_field_tag (default)" !b
+<%= search_field_tag ${1:name}, ${2:value=nil}, ${3:options_hash} %>
+endsnippet
+
+snippet st "select_tag (default)" !b
+<%= select_tag ${1:name}, ${2:options_hash} %>
+endsnippet
+
+snippet tat "text_area_tag (default)" !b
+<%= text_area_tag ${1:name}, ${2:content:nil}, ${3:options_hash} %>
+endsnippet
+
+snippet tft "text_field_tag (default)" !b
+<%= text_field_tag ${1:name}, ${2:value=nil}, ${3:options_hash} %>
+endsnippet
+
+snippet uft "url_field_tag (default)" !b
+<%= url_field_tag ${1:name}, ${2:value=nil}, ${3:options_hash} %>
+endsnippet
+

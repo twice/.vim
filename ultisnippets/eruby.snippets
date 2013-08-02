@@ -1,0 +1,105 @@
+snippet % "<% %>" i
+<% ${1} %>
+endsnippet
+
+snippet = "<%= %>" i
+<%= ${1} %>
+endsnippet
+
+snippet # "#{ }" i
+#{1:var}
+endsnippet
+
+snippet eo "ERB output tag" !w
+<%= $1 %>
+endsnippet
+
+snippet ee "ERB evaluation tag" !w
+<% $1 %>
+endsnippet
+
+snippet y "yield"
+<%= yield :${1:partial} %>
+endsnippet
+
+snippet cf "content_for"
+<% content_for :${1:yield_label_in_layout}, "${2:Some text...}" %>
+endsnippet
+
+snippet cfb "content_for (block)"
+<% content_for :${1:yield_label_in_layout} do %>
+	${2}
+<% end %>
+endsnippet
+
+snippet plo "partial layout render" !
+<%= render layout: '${1:partial}' do %>
+	${2:content_for_yield}
+<% end %>
+endsnippet
+
+snippet jit "javascript include tag" !b
+<%= javascript_include_tag ${1:"jsfile"} %>
+endsnippet
+
+snippet slt "stylesheet include tag" !b
+<%= stylesheet_link_tag "${1:application}", media: "all" %>
+endsnippet
+
+snippet i18 "i18"
+I18n.t('${1:type.key}')${2}
+endsnippet
+
+snippet ltb "link_to block" !
+<%= link_to ${1:@model} do %>
+$2
+<% end %>
+endsnippet
+
+snippet ltc "link_to (child model)"
+<%= link_to '${1:link text...}', [@${2:parent}, @${3:child}] %>
+endsnippet
+
+snippet ltd "link_to delete" !
+<%= link_to '${1:Delete}', ${2:_path},
+       :method => :delete,
+       :data   => { :confirm => 'Are you sure?'} %>
+endsnippet
+
+snippet ltp "link_to path" !
+<%= link_to ${1:"title"}, ${2:path} %>
+endsnippet
+
+snippet rp "render partial" !
+<%= render ${1:'partial_name'} %>
+endsnippet
+
+snippet ea "each block" !
+<% ${1:collection}.each do |${2:param}| %>
+  $0
+<% end %>
+endsnippet
+
+snippet for "for"
+<% for ${2:item} in ${1:items} %>
+	${3}
+<% end %>
+endsnippet
+
+snippet if "if condition" !b
+<% if ${0:condition} %>
+	$1
+<% end %> 
+endsnippet
+
+snippet ife "if else" !b
+<% if ${0:condition} %> 
+	$1
+<% else %> 
+	$2
+<% end %> 
+endsnippet
+
+snippet else "else " !b
+<% else %>
+endsnippet

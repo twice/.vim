@@ -1,0 +1,43 @@
+snippet classjm "Django model class"
+class $1(models.Model):
+	
+	def __unicode__(self):
+		$0
+endsnippet
+
+snippet fim "from ... import ..."
+from $1 import $0
+endsnippet
+
+snippet defr "view method defn" !
+def ${1:name}(request$2):
+	$0
+endsnippet
+
+snippet cf "CharField"
+${1:field_name} = models.CharField(max_length=${2:100})
+endsnippet
+
+snippet url "url() entry " !
+url(r'^$1', '${2:view_fn}', name="$0"),
+endsnippet
+
+snippet fk "Foreign Key"
+${1:key_name} = models.ForeignKey(${0:Model})
+endsnippet
+
+snippet itf "IntegerField"
+${1:field_name} = models.IntegerField($0)
+endsnippet
+
+snippet df "DateField"
+${1:field_name} = models.DateField($0)
+endsnippet
+
+snippet dtf "DateTimeField"
+${1:field_name} = models.DateTimeField($0)
+endsnippet
+
+snippet tf "TextField"
+${1:field_name} = models.TextField($0)
+endsnippet

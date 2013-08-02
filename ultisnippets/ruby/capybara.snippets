@@ -1,0 +1,108 @@
+snippet cb "click_button - capybara" !
+click_button "${1:name}"
+endsnippet
+
+snippet cl "click_link - capybara" !
+click_link '${1: Link-name or link-id}'
+endsnippet
+
+snippet fi "fill_in - capybara" !b
+fill_in '${1:name}', with: "${2:value}"
+endsnippet
+
+snippet sel "select-from - capybara" !b
+select '${1:Option}', from: '${2:Select Box}'
+endsnippet
+
+snippet ethf "expect to have_field -capybara" !b
+expect(${1:page}).to have_field '${0:Name}', with: '${1}'
+endsnippet
+
+snippet ethl "expect to have_link - capybara" !b
+expect(${1:page}).to have_link ${2:link_text} 
+endsnippet
+
+snippet enthl "expect not_to have_link - capybara" !b
+expect(${1:page}).not_to have_link ${2:link_text} 
+endsnippet
+
+snippet eths "expect to have_selector - capybara" !b
+expect(${1:page}).to have_selector ${1:selector} 
+endsnippet
+
+snippet enths "expect not_to have_selector - capybara" !b
+expect(${1:page}).not_to have_selector ${1:selector} 
+endsnippet
+
+snippet bac "background - capybara" !b
+background do
+  $0
+end
+endsnippet
+
+snippet fea "feauture - capybara" !b
+feature "${1:Name}" do
+  scenario "${2:title}" do
+    $0
+  end
+end
+endsnippet
+
+snippet sce "rspec capybara scenario" !b
+scenario "$1" do
+  $2
+end
+endsnippet
+
+snippet vis "visit - capybara" !b
+visit $1
+endsnippet
+
+snippet within "within - capybara" !b
+within(${1:selector}) do
+	$0
+end
+endsnippet
+
+snippet aft "after - RSpec" !b
+after do
+  ${1}
+end
+endsnippet
+
+snippet afte "after(:each) - RSpec" !b
+after(${1::each}) do
+  ${2}
+end
+endsnippet
+
+snippet Befe "before(:each) { } - RSpec" !b
+before(:each) { $1 }
+endsnippet
+
+snippet befe "before(:each) do..end - RSpec" !b
+before(:each) do
+  $1
+end
+endsnippet
+
+snippet befa "before(:all) do..end - RSpec" !b
+before(:all) do
+  $0
+end
+endsnippet
+
+snippet Befa "before(:all) { } - RSpec" !b
+before(:all) { $0 }
+endsnippet
+
+snippet let! "let! do..end - RSpec" !b
+let!(:$1) do
+  $0
+end
+endsnippet
+
+snippet saop "save_and_open_page - RSpec" !b
+save_and_open_page
+endsnippet
+

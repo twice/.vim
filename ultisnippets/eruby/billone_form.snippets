@@ -1,0 +1,19 @@
+# billone project centered form
+snippet bcf "billone centered form" !
+<div class="row">
+  <div class="form-centered">
+    <%= simple_form_for(${1:model},
+					defaults: { input_html: { class: 'input-block-level'} } do |f| %>
+	  <%= yield %>
+ 	  <%= f.error_notification %>
+	  $2
+	  <%= f.button :submit, class: "btn-primary" %>
+  </div>
+</div>
+endsnippet
+
+snippet bfp "billone form page like new or edit" !
+<%= render layout: 'form' do %>
+  <h3 class="muted">${1:form_title}</h3>
+<% end %>
+endsnippet
