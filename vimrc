@@ -280,6 +280,7 @@ nnoremap <leader>n :NumbersToggle<CR>
 runtime macros/matchit.vim
 
 "ctrlp"
+let g:ctrl_map = '<D-t>'
 let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
