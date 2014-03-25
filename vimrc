@@ -11,11 +11,13 @@ Bundle 'gmarik/vundle'
 " Plugin installations
 "======================================================
 
-" System
+" Very useful
 Bundle 'vim-scripts/Gist.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'Raimondi/delimitMate'
@@ -25,6 +27,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'SirVer/ultisnips.git'
 Bundle 'godlygeek/tabular'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'jeetsukumaran/vim-buffergator'
 
 " Syntaxes and such.
 Bundle 'leshill/vim-json'
@@ -36,17 +40,20 @@ Bundle 'othree/html5.vim'
 Bundle 'itspriddle/vim-jquery'
 
 "Python specific
-" Bundle 'klen/python-mode'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/python_match.vim'
+Bundle 'klen/python-mode'
+Bundle 'Valloric/YouCompleteMe'
+"Bundle 'fs111/pydoc.vim'
+"Bundle 'vim-scripts/python_match.vim'
 "Bundle 'nvie/vim-flake8'
-Bundle 'jmcantrell/vim-virtualenv'
+"Bundle 'jmcantrell/vim-virtualenv'
 
 " Ruby specific
 Bundle 'tpope/vim-rails'
 Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-endwise'
+
+"Git specific"
+Bundle 'airblade/vim-gitgutter'
 
 " Fun, but not useful
 Bundle 'sjl/badwolf'
@@ -61,31 +68,7 @@ filetype indent plugin on "required!
 " Various settings
 "=========================================================
 
-if has("gui_macvim") && has ('gui_running')
-  color badwolf
-  set antialias        "Smooth macvim fonts
-  set guioptions-=T    " Removes top toolbar
-  set guioptions-=r    " Removes right hand scroll bar
-  set go-=L            " Removes left hand scroll bar
-  set guifont=Monaco:h16
-
-  "Set indenting to Command [ or ]"
-  vmap <D-]> >gv
-  vmap <D-[> <gv
-  nmap <D-]> >>
-  nmap <D-[> <<
-  omap <D-]> >>
-  omap <D-[> <<
-  imap <D-]> <Esc>>>i
-  imap <D-[> <Esc><<i
-
-  "ctrlp custom key mappings"
-  macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CtrlP<CR>
-  imap <D-t> <ESC>:CtrlP<CR>
-else
-  colorscheme desert
-endif
+colorscheme desert
 
 syntax enable		"enable syntax highlighting - used to be (syntax on)
 
@@ -182,10 +165,6 @@ nnoremap k gk
 nnoremap Q gqip
 vnoremap Q gq
 
-" Press space bar to turn off search highlighting and clear any message
-" displayed
-nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
-
 " Remap VIM 0 to first non-blank character
 nnoremap 0 ^
 
@@ -208,6 +187,28 @@ nmap <leader>w :w!<CR>
 
 " Edit/View files relative to current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+"Backspace closes buffer.
+nnoremap <BS> :bd<CR>
+
+" OS X-like space bar to scroll.
+nnoremap <Space> <C-F>
+
+" Press , space bar to turn off search highlighting and clear any message
+" displayed
+" nnoremap <Leader><space> :noh<CR>
+nnoremap <Leader><Space> :nohl<Bar>:echo<CR>
+
+" Duplicate visual selection.
+vmap D yP'<
+
+" Map § to # for typing convenience
+set iminsert=1
+set imsearch=-1
+noremap § #
+noremap! § #
+lnoremap § #
+
 
 
 "======================================================
@@ -247,19 +248,15 @@ let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
 let g:badwolf_css_props_highlight = 1
 
-"NERDTree
-let g:NERDTreeWinPos = "right"
-
 "Sparkup plugin
 let g:sparkupNextMapping = '<c-;>'
 
-"Buffergator Plugin
-nmap <leader>b :BuffergatorToggle<cr>
-
-" UltiSnipsEdit
-nmap <leader>se :UltiSnipsEdit<cr>
+" UltiSnips
+let g:UltiSnipsExpandTrigger='<c-tab>'
+let g:UltiSnipsListSnippets="<c-s-tab>"
 let g:UltiSnipsSnippetsDir        = '~/.vim'
 let g:UltiSnipsSnippetDirectories = ["ultisnippets"]
+nmap <leader>se :UltiSnipsEdit<cr>
 
 " Rails.vim
 nnoremap <leader>vv  :Rview<cr>
@@ -276,16 +273,66 @@ set fillchars+=stl:\ ,stlnc:\
 "Toggle Number lines
 nnoremap <leader>n :NumbersToggle<CR>
 
+"NERDTree
+let mapleader = "\\"
+let g:NERDTreeWinPos = "right"
+nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+
+let mapleader = ","
+
 "settings for textobj-rubyblock
 runtime macros/matchit.vim
 
 "ctrlp"
 let g:ctrl_map = '<D-t>'
+"search anywhere in project"
+nnoremap <leader>F :CtrlP<CR>
+"search in current dir"
+nnoremap <leader>f :CtrlPCurWD<CR>
 let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
   \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
   \ }
-"autocmd BufWritePost *.py call Flake8()
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
+"pymode configuration"
+let g:pymode_rope = 1
 
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+"Ignore line width warning"
+let g:pymode_lint_ignore = 'E501'
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 0
+let g:pymode_breakpoint_key = '<leader>k'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+"YouCompleteMe ycm"
+let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"Buffergator Plugin
+nmap <leader>b :BuffergatorToggle<cr>
