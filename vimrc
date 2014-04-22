@@ -7,6 +7,9 @@ call vundle#rc()
 "let vundle manage vundle"
 Bundle 'gmarik/vundle'
 
+"To install plugin(s): run ':PluginInstall' within vim or
+" 'vim +PluginInstall +qall' without vim (on the command line)
+
 "======================================================
 " Plugin installations
 "======================================================
@@ -55,7 +58,8 @@ Bundle 'tpope/vim-endwise'
 "Git specific"
 Bundle 'airblade/vim-gitgutter'
 
-" Fun, but not useful
+" Fun, color schemes
+Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Bundle 'sjl/badwolf'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'skammer/vim-css-color'
