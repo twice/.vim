@@ -64,6 +64,7 @@ Bundle 'sjl/badwolf'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'skammer/vim-css-color'
 Bundle 'mgutz/vim-colors'
+Bundle 'flazz/vim-colorschemes'
 
 
 filetype indent plugin on "required!
@@ -72,7 +73,7 @@ filetype indent plugin on "required!
 " Various settings
 "=========================================================
 
-colorscheme desert
+colorscheme hemisu
 
 syntax enable		"enable syntax highlighting - used to be (syntax on)
 
@@ -213,6 +214,8 @@ noremap § #
 noremap! § #
 lnoremap § #
 
+"Save readonly files
+cnoremap sudow w !sudo tee % >/dev/null
 
 
 "======================================================
@@ -247,7 +250,8 @@ if exists(":Tabularize")
 endif
 
 "Badwolf colorscheme
-set background=dark
+
+set background=light
 let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
 let g:badwolf_css_props_highlight = 1

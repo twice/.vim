@@ -1,8 +1,9 @@
 macmenu &File.New\ Tab key=<nop>
 
-color badwolf
+color solarized
+set background=light
 
-set guifont=Monaco:h12
+set guifont=Monaco:h14
 set antialias        "Smooth macvim fonts
 set guioptions-=T    " Removes top toolbar
 set guioptions-=r    " Removes right hand scroll bar
