@@ -35,16 +35,16 @@ Bundle 'jeetsukumaran/vim-buffergator'
 
 " Syntaxes and such.
 Bundle 'leshill/vim-json'
-Bundle 'kchmck/vim-coffee-script'
+"Bundle 'kchmck/vim-coffee-script'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-haml'
-Bundle 'groenewege/vim-less'
+"Bundle 'groenewege/vim-less'
 Bundle 'othree/html5.vim'
-Bundle 'itspriddle/vim-jquery'
+"Bundle 'itspriddle/vim-jquery'
 
 "Python specific
 Bundle 'klen/python-mode'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 "Bundle 'fs111/pydoc.vim'
 "Bundle 'vim-scripts/python_match.vim'
 "Bundle 'nvie/vim-flake8'
@@ -59,12 +59,14 @@ Bundle 'tpope/vim-endwise'
 Bundle 'airblade/vim-gitgutter'
 
 " Fun, color schemes
-Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
+"Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Bundle 'sjl/badwolf'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'skammer/vim-css-color'
-Bundle 'mgutz/vim-colors'
-Bundle 'flazz/vim-colorschemes'
+"Bundle 'mgutz/vim-colors'
+"Bundle 'flazz/vim-colorschemes'
+"Bundle 'morhetz/gruvbox'
+"Bundle 'jonathanfilip/vim-lucius'
 
 
 filetype indent plugin on "required!
@@ -73,7 +75,10 @@ filetype indent plugin on "required!
 " Various settings
 "=========================================================
 
-colorscheme hemisu
+colorscheme solarized
+set background=light
+
+
 
 syntax enable		"enable syntax highlighting - used to be (syntax on)
 
@@ -101,6 +106,14 @@ set tabstop=4		"tab spacing - '2 spaces'
 set softtabstop=2	"unify
 set shiftwidth=2
 set expandtab
+
+"Enable scrolling in iterm2 using the 'SGR' protocol
+set mouse=a
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+end
 
 "WildMenu completion
 set wildignore+=*.pyc
@@ -140,6 +153,9 @@ nnoremap Y y$
 nnoremap ; :
 vnoremap ; :
 noremap - ;
+
+"Shortcut for search and replace
+nnoremap <leader>r :%s/
 
 
 "Surround selected tags with erb tags
@@ -236,6 +252,10 @@ au BufNewFile,BufReadPost *.scss setl foldmethod=indent
 au BufNewFile,BufReadPost *.sass setl foldmethod=indent
 au BufRead,BufNewFile *.scss set filetype=scss
 
+"htmldjango filetypes and sparkup plugin
+au FileType htmldjango runtime! ftplugin/html/sparkup.vim
+
+
 
 "=======================================================
 " Plugin Configuration
@@ -251,10 +271,13 @@ endif
 
 "Badwolf colorscheme
 
-set background=light
+" set background=dark
 let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
 let g:badwolf_css_props_highlight = 1
+
+"Gruvbox
+let g:gruvbox_contrast_dark="soft"
 
 "Sparkup plugin
 let g:sparkupNextMapping = '<c-;>'
@@ -264,7 +287,7 @@ let g:UltiSnipsExpandTrigger='<c-tab>'
 let g:UltiSnipsListSnippets="<c-s-tab>"
 let g:UltiSnipsSnippetsDir        = '~/.vim'
 let g:UltiSnipsSnippetDirectories = ["ultisnippets"]
-nmap <leader>se :UltiSnipsEdit<cr>
+nmap <leader>use :UltiSnipsEdit<cr>
 
 " Rails.vim
 nnoremap <leader>vv  :Rview<cr>
@@ -306,8 +329,14 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
+"======================================================================
 "pymode configuration"
+"======================================================================
+let g:pymode_python = 'python3'
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
 let g:pymode_rope = 1
+let g:pymode_rope_complete_on_dot = 1
 
 " Documentation
 let g:pymode_doc = 1

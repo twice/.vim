@@ -1,9 +1,9 @@
 macmenu &File.New\ Tab key=<nop>
 
-color solarized
-set background=light
+color badwolf         "railscasts gruvbox
+set background=dark   "light
 
-set guifont=Monaco:h14
+set guifont=Droid\ Sans\ Mono\ Awesome:h12
 set antialias        "Smooth macvim fonts
 set guioptions-=T    " Removes top toolbar
 set guioptions-=r    " Removes right hand scroll bar

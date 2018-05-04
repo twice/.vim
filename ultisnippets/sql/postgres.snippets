@@ -1,0 +1,98 @@
+snippet sp "stored procedure, function" !iw
+CREATE OR REPLACE FUNCTION ${1:func_name}($2)
+RETURNS $3 AS
+$$
+$4
+$$
+LANGUAGE '${5:plpgsql}' ${0:VOLATILE|STABLE|IMMUTABLE}
+endsnippet
+snippet trig "trigger function" !iw
+CREATE OR REPLACE FUNCTION ${1:trig_func}() RETURNS TRIGGER AS
+$$
+BEGIN
+  $2
+END;
+$$
+LANGUAGE 'plpgsql' $0;
+endsnippet
+snippet if "IF ... THEN"
+IF $1 THEN
+  $2
+END IF;
+endsnippet
+snippet ife "IF ... THEN  .... ELSE"
+IF $1 THEN
+  $2
+ELSE
+  $3
+END IF;
+endsnippet
+snippet elf "ELSIF ... THEN"
+ELSIF $1 THEN
+  $2
+$0
+endsnippet
+snippet pk "PRIMARY KEY" !iw
+PRIMARY KEY${1:,}
+$0
+endsnippet
+snippet fk "FOREIGN KEY ... REFERENCES .."
+FOREIGN KEY ($1) REFERENCES ${2:table}($0)
+endsnippet
+snippet nn " NOT NULL" !iw
+NOT NULL$0
+endsnippet
+snippet ct "CREATE TABLE ..."
+CREATE TABLE ${1:name}(
+  ${2:column} ${3:type}
+);
+endsnippet
+snippet vc "VARCHAR(n)" !iw
+VARCHAR(${1:20})$0
+endsnippet
+snippet ins "INSERT INTO ..."
+INSERT INTO ${1:table_name} VALUES $0
+endsnippet
+snippet upd "UPDATE SET ..."
+UPDATE ${1:table} SET ${2:col=new_val} WHERE $0
+endsnippet
+snippet sf "SELECT ... FROM ...."
+SELECT $1 FROM $0
+endsnippet
+snippet sfw "SELECT ... FROM ... WHERE ..."
+SELECT $1 FROM $2 WHERE $0
+endsnippet
+snippet sfj "SELECT ... FROM ... JOIN ... ON"
+SELECT $1 FROM $2 JOIN $3 ON $0
+endsnippet
+snippet wr "WITH RECURSIVE ..."
+WITH RECURSIVE $1 AS (
+  $2
+  UNION ${3:ALL}
+  $4
+)
+$0 ;
+endsnippet
+snippet ua "UNION ALL" !iw
+UNION ALL
+$0
+endsnippet
+snippet bsr "bigserial" !iw
+BIGSERIAL $0
+endsnippet
+snippet se "SERIAL" !iw
+SERIAL $0
+endsnippet
+snippet jo "JOIN ... ON ..." !iw
+JOIN $1 ON $0
+endsnippet
+snippet ju "JOIN ... USING(...)" !iw
+JOIN $1 USING($2) $0
+endsnippet
+snippet loj "LEFT OUTER JOIN" !iw
+LEFT OUTER JOIN $1 ON $0
+endsnippet
+snippet loju "LEFT OUTER JOIN ... USING" !iw
+LEFT OUTER JOIN $1 USING($2) $0
+endsnippet
+

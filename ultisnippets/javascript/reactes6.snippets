@@ -1,0 +1,52 @@
+snippet icp "import React, { Component, PropTypes} from 'react'"
+import React, { Component, PropTypes } from 'react'
+endsnippet
+snippet ic "import { Component } from 'react'"
+import React, { Component } from 'react'
+endsnippet
+snippet rc "react component"
+class $1 extends Component {
+  $2
+  render() {
+    $3	
+    return (
+      $0
+    )
+  }
+}
+endsnippet
+snippet rcc "react container component"
+class $1 extends Component {
+  constructor() {
+    super(...arguments)	
+    $2
+  }
+}
+endsnippet
+snippet ren "render method"
+render() {
+  return (
+	  $0
+  )
+}
+endsnippet
+snippet jt "jsx tag" !iw
+<$1>$0</$1>
+endsnippet
+snippet jat "jsx tag with attributes" !iw
+<$1 $2>$0</$1>
+endsnippet
+snippet jbt "jsx block tag"
+<$1>
+  $0
+</$1>
+endsnippet
+snippet jbat "jsx block tag with attrs" !iw
+<$1 $2>
+  $0
+</$1>
+endsnippet
+snippet jct "jsx closed tag"
+<$1 />
+endsnippet
+

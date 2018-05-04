@@ -1,0 +1,10 @@
+snippet fr "flask route"
+@${1:app}.route('$2', methods=['$3'])
+def ${4:handler}($5):
+    $0
+endsnippet
+snippet feh "flask errorhandler"
+@${1:app}.errorhandler($2)
+def ${3:handler}(error):
+    $0
+endsnippet

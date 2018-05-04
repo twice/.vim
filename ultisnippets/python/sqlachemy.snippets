@@ -1,0 +1,16 @@
+snippet tn "__tablename__"
+__tablename__ = $1
+endsnippet
+snippet ma "__mapper_args__"
+__mapper_args__ = { $1 }
+endsnippet
+snippet rel "relationship('entity', ..)"
+relationship($1, back_populates='$2'$0)
+endsnippet
+snippet pk "id Integer primary key Column"
+id = Column(${1:Integer}, primary_key=True)
+endsnippet
+snippet fk "fk Column"
+$1_id = Column(${2:Integer}, ForeignKey('$3')${4:, nullable=False})
+endsnippet
+

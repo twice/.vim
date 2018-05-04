@@ -1,0 +1,38 @@
+snippet sout "System.out.println"
+System.out.println($1);
+endsnippet
+snippet class "public class"
+public class ${1:Name} {
+  $0
+}
+endsnippet
+snippet classa "public abstract class"
+public abstract class ${1:Name} {
+  $0
+}
+endsnippet
+snippet classai "abstract class implements"
+public abstract class ${1:Name} implements ${2:Interface} {
+  $0
+}
+endsnippet
+snippet classae "abstract class extends"
+public abstract class ${1:Name} extends ${2:SuperClass} {
+  $0
+}
+endsnippet
+snippet classe "class extends"
+public class ${1:ClassName} extends ${2:SuperClass} {
+  $0
+}
+endsnippet
+snippet classi "class implements"
+public class ${1:ClassName} implements ${2:Interface} {
+  $0
+}
+endsnippet
+snippet meth "method"
+${1:public} ${2:void} ${3:methodName}($4) {
+  $0;
+}
+endsnippet

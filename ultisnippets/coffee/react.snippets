@@ -1,0 +1,27 @@
+snippet rd "React.DOM.*" !iw
+React.DOM.${1:tag}
+endsnippet
+
+snippet rdd "React.DOM.div" !iw
+React.DOM.div ${1:null}
+endsnippet
+
+snippet rc "React.createClass" b
+@${1:classname} = React.createClass
+  displayName: $2
+
+  $3
+endsnippet
+
+snippet rce "React.createElement" b
+React.createElement ${1:compName}, $2
+endsnippet
+
+snippet rfdn "React.findDOMNode().value" !iw
+React.findDOMNode(${1:@refs.}${2:input}).value
+endsnippet
+
+snippet gis "getInitialState method" b
+getInitialState: ->
+  $1
+endsnippet

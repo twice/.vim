@@ -22,6 +22,14 @@ snippet entb "expect not_to be" !iw
 expect(${0:actual}).not_to be ${1}
 endsnippet
 
+snippet etbv "expect to_be_valid" !iw
+expect(${0:actual}).to be_valid
+endsnippet
+
+snippet entbv "expect not_to_be_valid" !iw
+expect(${0:actual}).not_to be_valid
+endsnippet
+
 snippet etm "expect to match" !iw
 expect(${0:a_string}).to match ${1:/a_regex/}
 endsnippet

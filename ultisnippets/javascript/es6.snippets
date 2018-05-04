@@ -1,0 +1,54 @@
+snippet imp "import from"
+import $1 from '$0'
+endsnippet
+snippet con "const es6"
+const $1 = $0
+endsnippet
+snippet let "let es6"
+let $1 = $0
+endsnippet
+snippet mt "new (es6) method"
+${1:method}($2) {
+  $0
+}
+endsnippet
+snippet af "arrow function () => {}" !iw
+($1) => { $0 }
+endsnippet
+snippet af "arrow function () => ()" !iw
+($1) => (
+  $0
+)
+endsnippet
+snippet afx "arrow function expression x => x * x" !iw
+$1 => $0
+endsnippet
+snippet afb "arrow function block " !iw
+($1) => {
+  $0
+}
+endsnippet
+snippet : "key value pair k: v" !iw
+"$1": $0
+endsnippet
+snippet ed "export default"
+export default $0
+endsnippet
+snippet e "export module"
+export $0;
+endsnippet
+snippet if "if without semicolon" !iw
+if($1) {
+  $0
+}
+endsnippet
+snippet fn "function" !iw
+function ($1) {
+  $0
+}
+endsnippet
+snippet nfn " named function" !iw
+function $1($2) {
+  $0
+}
+endsnippet

@@ -24,6 +24,14 @@ if ${1:condition}
 end
 endsnippet
 
+snippet ife "if-else"
+if ${1:condizione}
+  ${2}
+else
+  ${3}
+end
+endsnippet
+
 snippet elsif "elsif"
 elsif ${1:condition}
 endsnippet
@@ -121,8 +129,16 @@ do |${1:variable}|
 end
 endsnippet
 
-snippet : ":"
+snippet > "=> hash rocket"
 :${1:key} => :${2:value}$0
+endsnippet
+
+snippet : "k:v - hash entry"
+${1:key}: ${2:value}$0
+endsnippet
+
+snippet :: "k: :s - hash symbol value"
+${1:key}: :${2:symbol}$0
 endsnippet
 
 snippet si "#{} - string interpolation" !iw

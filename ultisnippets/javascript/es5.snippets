@@ -97,13 +97,12 @@ ${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
 endsnippet
 
 snippet switch "switch"
-switch(${1:expression}) {
-	case '${3:case}':
-		${4:// code}
-		break;
+switch($1) {
+	case $3:
+		$4
 	${5}
 	default:
-		${2:// code}
+		$2
 }
 endsnippet
 

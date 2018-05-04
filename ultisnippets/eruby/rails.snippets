@@ -18,15 +18,15 @@ snippet ee "ERB evaluation tag" !w
 <% $1 %>
 endsnippet
 
-snippet y "yield"
+snippet y "yield" !w
 <%= yield :${1:partial} %>
 endsnippet
 
-snippet cf "content_for"
+snippet cf "content_for" !w
 <% content_for :${1:yield_label_in_layout}, "${2:Some text...}" %>
 endsnippet
 
-snippet cfb "content_for (block)"
+snippet cfb "content_for (block)" !w
 <% content_for :${1:yield_label_in_layout} do %>
 	${2}
 <% end %>
@@ -50,37 +50,37 @@ snippet i18 "i18"
 I18n.t('${1:type.key}')${2}
 endsnippet
 
-snippet ltb "link_to block" !
+snippet ltb "link_to block" !w
 <%= link_to ${1:@model} do %>
 $2
 <% end %>
 endsnippet
 
-snippet ltc "link_to (child model)"
+snippet ltc "link_to (child model)" !w
 <%= link_to '${1:link text...}', [@${2:parent}, @${3:child}] %>
 endsnippet
 
-snippet ltd "link_to delete" !
+snippet ltd "link_to delete" !w
 <%= link_to '${1:Delete}', ${2:_path},
        :method => :delete,
        :data   => { :confirm => 'Are you sure?'} %>
 endsnippet
 
-snippet ltp "link_to path" !
+snippet ltp "link_to path" !w
 <%= link_to ${1:"title"}, ${2:path} %>
 endsnippet
 
-snippet rp "render partial" !
+snippet rp "render partial" !w
 <%= render ${1:'partial_name'} %>
 endsnippet
 
-snippet ea "each block" !
+snippet ea "each block" !w
 <% ${1:collection}.each do |${2:param}| %>
   $0
 <% end %>
 endsnippet
 
-snippet for "for"
+snippet for "for" !w
 <% for ${2:item} in ${1:items} %>
 	${3}
 <% end %>

@@ -37,6 +37,10 @@ snippet fs "f.submit"
 <%= ${1:f}.submit "${2:button name}" %>
 endsnippet
 
+snippet fsf "f.select"
+<%= f.select :${0:attribute}, ${1:Model::SELECT_VALUES}, include_blank: true %>
+endsnippet
+
 snippet fta "f.text_area"
 <%= ${1:f}.text_area :${2:attribute} %>
 endsnippet
